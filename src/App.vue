@@ -1,5 +1,27 @@
 <template>
-  <div></div>
+    <AddForm></AddForm>
+    <Catalog></Catalog>
 </template>
 
-<style lang="scss"></style>
+<script>
+import AddForm from "./components/AddForm";
+import Catalog from "./components/Catalog";
+
+export default {
+  components: {
+    AddForm,
+    Catalog
+  },
+};
+</script>
+
+<style lang="scss">
+#app {
+  display: grid;
+  grid-template-columns: 332px 1fr;
+  grid-template-rows: 1fr;
+  min-height: 100vh;
+  gap: 16px;
+  padding: 32px;
+}
+</style>
