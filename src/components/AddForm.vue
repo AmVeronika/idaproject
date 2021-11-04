@@ -1,13 +1,18 @@
 <template>
-  <section class="add-form">
+  <section :class="$style['add-form']">
     <h1 class="add-form__title fs-28">Добавление товара</h1>
-    <overal-form></overal-form>
+    <OveralForm></OveralForm>
   </section>
 </template>
 
 <script>
+import OveralForm from "./OveralForm";
+
 export default {
   name: "AddForm",
+  components: {
+    OveralForm
+  },
   data() {
     return {
     }
@@ -15,7 +20,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" module>
 .add-form{
 display: flex;
   flex-direction: column;

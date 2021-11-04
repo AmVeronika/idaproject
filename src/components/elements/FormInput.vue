@@ -1,15 +1,17 @@
 <template>
-<button class="form-btn fs-12sb">Добавить товар</button>
+<button class="form-input fs-12sb">
+  <slot></slot>
+</button>
 </template>
 
 <script>
 export default {
-  name: "form-button"
+  name: "form-input"
 };
 </script>
 
 <style lang="scss">
-.form-btn {
+.form-input {
   padding: 10px;
   text-align: center;
   color: white;

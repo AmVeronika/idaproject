@@ -8,7 +8,7 @@
         :class="['fs-12', $style['add-form__input']]"
         type="text"
         placeholder="Введите наименование товара"
-        required
+        v-model="nameGood"
       />
     </label>
     <label :class="$style['add-form__label']">
@@ -20,6 +20,7 @@
           $style['add-form__input-resize'],
         ]"
         placeholder="Введите описание товара"
+        v-model="descriptionGood"
       ></textarea>
     </label>
     <label :class="$style['add-form__label']">
@@ -28,9 +29,9 @@
       >
       <input
         :class="['fs-12', $style['add-form__input']]"
-        type="text"
+        type="url"
         placeholder="Введите ссылку"
-        required
+        v-model="urlGood"
       />
     </label>
     <label :class="$style['add-form__label']">
@@ -41,16 +42,41 @@
         :class="['fs-12', $style['add-form__input']]"
         type="number"
         placeholder="Введите цену"
-        required
+        v-model="priceGood"
       />
     </label>
-    <form-button disabled>Добавить товар</form-button>
+    <form-button :disabled="verificationOfFillingForm"
+      >Добавить товар</form-button
+    >
   </form>
 </template>
 
 <script>
 export default {
   name: "OveralForm",
+  components: {},
+  data() {
+    return {
+      nameGood: "",
+      descriptionGood: "",
+      urlGood: "",
+      priceGood: "",
+    };
+  },
+  mounted() {
+    // this.verificationOfFillingForm;
+  },
+  computed: {
+    verificationOfFillingForm() {
+      if (this.nameGood && this.urlGood && this.priceGood) {
+        return false
+      }
+      return true
+    },
+    maskForPrice() {
+      return this.priceGood.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    },
+  },
 };
 </script>
 
