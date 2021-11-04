@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  name: "Catalog"
+  name: "selectCastom"
 };
 </script>
 
-<style lang="scss">
+<style scoped>
 
 </style>
