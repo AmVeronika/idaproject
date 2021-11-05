@@ -1,7 +1,7 @@
 <template>
   <section :class="$style['add-form']">
     <h1 class="add-form__title fs-28">Добавление товара</h1>
-    <OveralForm></OveralForm>
+    <OveralForm/>
   </section>
 </template>
 

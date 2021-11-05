@@ -12,6 +12,7 @@ export default {
     AddForm,
     Catalog
   },
+
 };
 </script>
 
@@ -23,5 +24,9 @@ export default {
   min-height: 100vh;
   gap: 16px;
   padding: 32px;
+  @media (max-width: 750px) {
+    grid-template-columns: 1fr;
+  }
+
 }
 </style>

@@ -1,27 +1,28 @@
 <template>
   <div :class="$style.catalog">
-    <selectCustom></selectCustom>
+    <SelectCustom></SelectCustom>
     <GoodsCard></GoodsCard>
   </div>
-
 </template>
 
 <script>
 import { mapActions } from "vuex";
 import GoodsCard from "./GoodsCard";
-import selectCustom from "./elements/selectCustom";
+import SelectCustom from "./elements/SelectCustom";
 
 export default {
   name: "Catalog",
   components: {
     GoodsCard,
-    selectCustom
+    SelectCustom,
   },
   methods: {
-    ...mapActions(["fetchDataGoodsList"]),
+    ...mapActions(["fetchDataGoodsList", "fetchSessionStorage"]),
+
   },
   mounted() {
     this.fetchDataGoodsList();
+    this.fetchSessionStorage()
   },
 };
 </script>
@@ -31,7 +32,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 16px;
 }
 </style>
