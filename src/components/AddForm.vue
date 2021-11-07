@@ -1,7 +1,7 @@
 <template>
   <section :class="$style['add-form']">
     <h1 class="add-form__title fs-28">Добавление товара</h1>
-    <OveralForm/>
+    <OveralForm />
   </section>
 </template>
 
@@ -14,15 +14,14 @@ export default {
     OveralForm
   },
   data() {
-    return {
-    }
-  },
+    return {};
+  }
 };
 </script>
 
 <style lang="scss" module>
-.add-form{
-display: flex;
+.add-form {
+  display: flex;
   flex-direction: column;
   gap: 16px;
 }

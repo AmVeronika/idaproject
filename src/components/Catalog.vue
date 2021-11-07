@@ -14,16 +14,15 @@ export default {
   name: "Catalog",
   components: {
     GoodsCard,
-    SelectCustom,
+    SelectCustom
   },
   methods: {
-    ...mapActions(["fetchDataGoodsList", "fetchSessionStorage"]),
+    ...mapActions(["fetchDataGoodsList"])
 
   },
   mounted() {
     this.fetchDataGoodsList();
-    this.fetchSessionStorage()
-  },
+  }
 };
 </script>
 

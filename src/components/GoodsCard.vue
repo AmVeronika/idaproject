@@ -1,6 +1,10 @@
 <template>
-  <div :class="$style['goods-card']">
-    <div :class="$style['good-card']" v-for="good in filterGoodsList" :key="good">
+  <div :class="$style['goods-card']" >
+    <div
+      :class="[$style['good-card'], $style[effectWhenRemoved === good.id ? 'effectremove' : '']]"
+      v-for="good in filterGoodsList"
+      :key="good"
+    >
       <img
         :src="good.urlImg"
         alt="фотография товара"
@@ -14,7 +18,8 @@
           {{ good.description }}
         </p>
         <p :class="[$style['good-card__price'], 'fs-24']">
-          {{ good.price.toLocaleString() }}<span class="$style['good-card__price-currency']"> руб.</span>
+          {{ good.price.toLocaleString()
+          }}<span class="$style['good-card__price-currency']"> руб.</span>
         </p>
       </div>
       <svg
@@ -45,9 +50,7 @@
           fill="white"
         />
       </svg>
-      <ModalWindow :showModal="showModal === good.id"><img src="../assets/img/remove.gif" alt="удалено" /></ModalWindow>
     </div>
-
   </div>
 </template>
 
@@ -59,19 +62,17 @@ export default {
   data() {
     return {
       sortedGoods: [],
-      showModal: false
+      effectWhenRemoved: undefined,
     };
   },
   methods: {
     ...mapMutations(["removalGood", "sortGoodsList"]),
     removeGood(good) {
-      this.showModal = good.id;
-      console.log(this.showModal);
+      this.effectWhenRemoved = good.id;
       setTimeout(() => {
-        this.showModal = false;
         this.removalGood(good);
-      }, 1000);
-    }
+      }, 300);
+    },
   },
   computed: {
     ...mapGetters(["getGoodsList", "getSelected"]),
@@ -139,6 +140,13 @@ export default {
   &__img {
     width: 100%;
     object-fit: cover;
+    background: $btn-dis;
+    -moz-user-select: none;
+    -o-user-select:none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   &__title,
@@ -172,8 +180,12 @@ export default {
   }
 
   &:hover {
-    transform: scale(1.01);
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.16), 0 6px 10px rgba(0, 0, 0, 0.02);
     transition: 0.2s ease-out;
   }
+}
+.effectremove {
+  opacity: 0;
+  transition: 0.2s ease-out;
 }
 </style>

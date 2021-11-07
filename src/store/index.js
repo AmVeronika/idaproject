@@ -22,12 +22,12 @@ export default createStore({
     },
     addGood(state, payload) {
       state.goodsList.push(payload);
-      sessionStorage.setItem(payload.id, JSON.stringify(payload))
+      sessionStorage.setItem("goods", JSON.stringify(state.goodsList));
     },
     removalGood(state, payload) {
-      sessionStorage.removeItem(payload.id);
       let ind = state.goodsList.indexOf(payload);
       state.goodsList.splice(ind, 1);
+      sessionStorage.setItem("goods", JSON.stringify(state.goodsList));
     },
     changeSelected(state, params) {
       state.selected = params;
@@ -35,23 +35,20 @@ export default createStore({
   },
   actions: {
     async fetchDataGoodsList({ commit }) {
-      const response = await fetch(
-        "https://raw.githubusercontent.com/AmVeronika/JSON-EBT/master/idaproject.json"
-      );
-      const res = await response.json();
-      // запускаем изменение состояния через commit
+      // для отображения новых данных при перезагрузке страницы
+      let goods = sessionStorage.getItem("goods");
+      let data = JSON.parse(goods);
+      let res;
+      if (data) {
+        res = data;
+      } else {
+        const response = await fetch(
+          "https://raw.githubusercontent.com/AmVeronika/JSON-EBT/master/idaproject.json"
+        );
+        res = await response.json();
+        sessionStorage.setItem("goods", JSON.stringify(res));
+      }
       commit("setGoodsList", res);
     },
-    fetchSessionStorage({ commit }) {
-      const sessionStorageArr = []
-      for (let i = 0; i < sessionStorage.length; i++) {
-        let key = sessionStorage.key(i);
-        let item = sessionStorage.getItem(key);
-        let data = JSON.parse(item);
-        sessionStorageArr.push(data)
-      }
-      commit("setGoodsList", sessionStorageArr);
-    }
-
   },
 });

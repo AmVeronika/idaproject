@@ -1,6 +1,6 @@
 <template>
-    <AddForm></AddForm>
-    <Catalog></Catalog>
+  <AddForm></AddForm>
+  <Catalog></Catalog>
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
   components: {
     AddForm,
     Catalog
-  },
+  }
 
 };
 </script>
