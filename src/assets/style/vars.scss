@@ -1,0 +1,57 @@
+//COLORS
+$bg-app: #FAF9F7;
+$bg: #FFFEFB; // фон (бежевый)
+$main-text: #3F3F3F; // основной текст(темно серый)
+$remark: rgba(255, 132, 132, 0.84); // пометки (розовый)
+$light-text: #B4B4B4; // светлый текст
+$btn-bg: #7BAE73; // кнопка (зеленый)
+$btn-dis: #EEEEEE; // кнопка неактивна
+$white: #ffffff;
+$black: rgba(0, 0, 0, 0.07);
+
+//Fonts
+$ff-regular: SourceRegular, sans-serif; //400
+$ff-semibold: SourceSemiBold, sans-serif; //600
+
+.fs-28 {
+  @include adaptiv-font(28, 18);
+  font-family: $ff-semibold;
+  font-weight: 600;
+}
+
+.fs-24 {
+  @include adaptiv-font(24, 20);
+  font-family: $ff-semibold;
+  font-weight: 600;
+}
+
+.fs-20 {
+  @include adaptiv-font(20, 17);
+  font-family: $ff-semibold;
+  font-weight: 600;
+}
+
+.fs-16 {
+  @include adaptiv-font(16, 13);
+  font-family: $ff-regular;
+  font-weight: 400;
+}
+
+.fs-12 {
+  @include adaptiv-font(12, 9);
+  font-family: $ff-regular;
+  font-weight: 400;
+}
+
+.fs-12sb {
+  @include adaptiv-font(12, 9);
+  font-family: $ff-semibold;
+  font-weight: 600;
+}
+
+.fs-10 {
+  @include adaptiv-font(10, 8);
+  font-family: $ff-regular;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
